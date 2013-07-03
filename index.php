@@ -18,9 +18,9 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,7 +34,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
 </head>
-<body>
+<body class="noOverflow">
 
 <!-- DATA REPORT -->
 
@@ -63,7 +63,7 @@
 				$statics[$a] = glob($root_path.$a.'/*.{png}', GLOB_BRACE);
 			else $missing .= 'PNGs ';
 
-			if(glob($root_path.$a.'/*.gif', GLOB_BRACE))
+			if(glob($root_path.$a.'/*.{gif}', GLOB_BRACE))
 				$gifs[$a] = glob($root_path.$a.'/*.gif', GLOB_BRACE);
 			else $missing .= 'GIF ';
 
@@ -102,39 +102,43 @@
 		}
 	}
 
-	function echo_empty() {
-		
+	// get about text
+	if(file_get_contents($root_path.'/about.txt')) {
+		$about = file_get_contents($root_path.'/about.txt');
 	}
-
-
 
 ?>
 
+<div id="container">
 
+	<div id="tweets">
 
-<div class="container">
-	
-	
+		<?php 
+
+			foreach($order as $o) {
+				$item = 'article'.$o;
+
+				if($completes[$item]){
+
+					echo '<a target="_BLANK" href="'.$links[$item].'">';
+					echo '<div class="tweet '.$item.'">';
+					echo '<h2>'.$titles[$item].'</h2>';
+					echo '<h4>'.$dates[$item].'</h4>';
+					echo '<h3>'.$subheads[$item].'</h3>';
+					echo '</div></a>';
+
+				}
+			}
+
+		?>
+
+	</div> <!-- /#tweets -->
+
 	<div id="watchers">
-
-		<!-- header -->
-		<div class="header row">
-			<a target="_BLANK" href="http://www.adamzabunyan.ca" title="Concept and Graphics: Adam Zabunyan">
-				<img class="imgcastle" src="images/scribe2.png">
-			</a>
-			<a target="_BLANK" href="http://www.iainmc.ca" title="Development: Iain M Campbell">
-				<img class="imgcastle" src="images/i.png">
-			</a>
-			<a target="_BLANK" href="http://www.cbaldesarra.com/" title="Concept and Graphics: Chris Baldesarra">
-				<img class="imgcastle" src="images/cb_avatar.png">
-			</a>
-		</div>
-
-		<!-- gifs -->
 		<?php 
 
 			echo '<div class="parts row">';
-	
+
 			$column = 0;
 
 
@@ -151,26 +155,19 @@
 
 				if($completes[$item]) {
 
-					echo
-						'<a class="'.$item.'" href="'.$links[$item].'" target="_blank">'.
-							'<div class="imgcastle '.$item.'">';
-								print_r($statics[$item]);
-								foreach($statics[$item] as $img) {
-									echo $img;
-									echo '<img src="'.$img.'" class="hide">';
-								}
-								// '<img class="frame" src="'.'">'.
-							echo '</div>'.
-						'</a>';
+					echo '<div class="block" id="'.$item.'">';
+						// foreach($statics[$item] as $img) echo '<img class="png" src="'.$img.'">';
+						echo '<img class="png" src="'.$statics[$item][0].'">';
+						echo '<img class="gif" src="'.$gifs[$item][0].'">';
+						echo '<div class="border"></div>';
+					echo '</div>';
 
 				} else {
 
 					echo
-						'<a href="" class="empty">'.
-							'<div class="imgcastle">'.
-							'BLANK';
-							echo '</div>'.
-						'</a>';
+						'<div class="block blank">'.
+						'BLANK';
+						echo '</div>';
 
 				}
 			}
@@ -183,14 +180,31 @@
 
 	</div> <!-- /#watchers -->
 
-	<div id="tweets">
-		
+	<div id="cloud"><div class="image"></div></div>
 
+	<div id="about">
+		<div class="hr"></div>
+		<p> <?= $about ?> </p>
+	</div> <!-- /#about -->
+
+
+	<div id="sigils">
+		<a target="_BLANK" href="http://www.adamzabunyan.ca" title="Concept and Graphics: Adam Zabunyan">
+			<div class="sigil az"></div>
+		</a>
+		<a target="_BLANK" href="http://www.iainmc.ca" title="Development: Iain M Campbell">
+			<div class="sigil ic"></div>
+		</a>
+		<a target="_BLANK" href="http://www.cbaldesarra.com/" title="Concept and Graphics: Chris Baldesarra">
+			<div class="sigil cb"></div>
+		</a>
+	</div>
+
+	<div id="info">
+		<div class="info-button">info</div>
 	</div>
 
 </div>
-
-	
 
 	<!-- container -->
 
@@ -200,8 +214,9 @@
 
 
 
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/builder.js"></script>
+<script src="js/lib/jquery-1.10.1.min.js"></script>
+<script src="js/framerate.js"></script>
+<script src="js/watchers.js"></script>
 
 </body>
 </html>

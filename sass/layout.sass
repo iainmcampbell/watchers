@@ -1,0 +1,270 @@
+@import "compass"
+
+// http://www.underware.nl/fonts/unibody/
+@font-face 
+  font-family: 'unibody_8regular'
+  src: url('../fonts/unibody_8-regular.eot')
+  src: url('../fonts/unibody_8-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/unibody_8-regular.woff') format('woff'), url('../fonts/unibody_8-regular.ttf') format('truetype'), url('../fonts/unibody_8-regular.svg#unibody_8regular') format('svg')
+  font-weight: normal
+  font-style: normal
+
+$box: url('../images/border-topLeft.png') top left, url('../images/border-topRight.png') top right, url('../images/border-bottomRight.png') bottom right, url('../images/border-bottomLeft.png') bottom left
+$body-mono: 8px/12px 'unibody_8regular', Menlo, Monaco, 'Liberation Mono', 'Lucida Console', Courier New, Courier, monospace
+
+@mixin nofontsmoothing()
+  font-smooth: never
+  -webkit-font-smoothing: none
+
+@mixin hidden()
+  opacity: 0
+  visibility: hidden
+
+@mixin visible()
+  opacity: 1
+  visibility: visible
+
+$orange: rgb(238, 113, 7)
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+  *
+    -webkit-transform: translate3d(0px, 0px, 0px)
+
+
+*
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+html, body
+  margin: 0
+  width: 100%
+  height: 100%
+  background-color: #23012c
+  color: yellow
+  cursor: url(''), auto
+  font: $body-mono
+  @include nofontsmoothing()
+
+  .noOverflow
+    overflow: hidden
+
+#container
+  width: 100%
+  min-width: 285px
+
+img
+  width: 100%
+  height: 100%
+
+
+#watchers.bottom
+  @include single-transition(bottom, 1s, ease)
+  @include visible()
+
+#cloud.top
+  @include single-transition(top, 1s, ease)
+  @include visible()
+
+
+// Tower of Blocks
+// ----------------------------------------
+
+#watchers
+  margin: 150px auto 0px auto
+  bottom: 13px
+  position: absolute
+  left: 50%
+  margin-left: -135px
+  top: auto
+  text-align: center
+  @include hidden()
+
+  .row
+    font-size: 0
+    margin-bottom: 0px
+    padding: 0
+    margin: 0
+    text-align: center
+
+  .block
+    position: relative
+    display: inline-block
+    vertical-align: middle
+    width: 90px
+    height: 90px
+    cursor: pointer
+    box-sizing: border-box
+
+    .border
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 90px
+      height: 90px
+
+    img
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 90px
+      height: 90px
+    
+    .png
+      @include visible()
+    .gif
+      @include hidden()
+
+    .border:hover
+      @include box-shadow(inset 0px 0px 10px 1px $orange)
+
+    &.active
+      .border
+        // border: 1px solid $orange
+        @include box-shadow(inset 0px 0px 10px 1px $orange)
+      .png
+        opacity: 0
+        visibility: hidden
+      .gif
+        opacity: 1
+        visibility: visible
+
+
+// Tweets
+// ----------------------------------------
+
+#tweets
+  @include hidden()
+  font: $body-mono
+  @include nofontsmoothing()
+  
+  .tweet
+
+
+// Cloud
+// ----------------------------------------
+
+#cloud
+  width: 344px
+  height: 110px
+  position: fixed
+  left: 50%
+  top: 0px
+  margin-left: -172px
+  background-color: #23012c
+
+  .image
+    width: 344px
+    height: 90px
+    position: absolute
+    bottom: -15px
+    background: url('../images/cloud.png') center no-repeat
+
+
+
+// About
+// ----------------------------------------
+
+#about
+  position: fixed
+  bottom: -500px
+  left: 50%
+  width: 270px
+  margin-left: -135px
+  background-color: #23012c
+  text-align: center
+  @include single-transition(bottom, 1s, ease)
+
+  .hr
+    width: 270px
+    height: 16px
+    margin-top: -10px
+    margin-bottom: 1em
+    background: url('../images/hr.png') center no-repeat
+
+
+
+
+
+
+// Sigils
+// ----------------------------------------
+
+#sigils
+  position: fixed
+  top: 20px
+  left: 20px
+  .sigil
+    margin: 5px
+    width: 45px
+    height: 45px
+    display: inline-block
+    background-size: 100% 100%
+    background-position: center
+  a
+    @include unstyled-link
+
+  .sigil.az
+    background: url('../images/sigil/az.png')
+  .sigil.ic
+    background: url('../images/sigil/ic.png')
+  .sigil.cb
+    background: url('../images/sigil/cb.png')
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+  #sigils
+    .sigil.az
+      background: url('../images/sigil/az@2x.png')
+    .sigil.ic
+      background: url('../images/sigil/ic@2x.png')
+    .sigil.cb
+      background: url('../images/sigil/cb@2x.png')
+
+
+// Info
+// ----------------------------------------
+
+#info
+  width: 45px
+  height: 45px
+  position: fixed
+  top: 20px
+  right: 20px
+  cursor: pointer
+  background: $box
+  background-repeat: no-repeat
+  
+  .info-button
+    width: 45px
+    height: 45px
+    line-height: 45px
+    text-align: center
+
+/* #Media Queries
+ *==================================================
+
+@media only screen and (max-width: 767px)
+  #container
+    width: 100%
+
+  #watchers, #cloud
+    top: 70px
+
+
+
+
+
+/* Smaller than standard 960 (devices and browsers)
+@media only screen and (max-width: 959px)
+
+/* Tablet Portrait size to standard 960 (devices and browsers)
+@media only screen and (min-width: 768px) and (max-width: 959px)
+
+/* All Mobile Sizes (devices and browser)
+@media only screen and (max-width: 767px)
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers)
+@media only screen and (min-width: 480px) and (max-width: 767px)
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+@media only screen and (max-width: 479px)
+

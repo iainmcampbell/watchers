@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "unibody_8regular";
+  src: url("../fonts/unibody_8-regular.eot");
+  src: url("../fonts/unibody_8-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/unibody_8-regular.woff") format("woff"), url("../fonts/unibody_8-regular.ttf") format("truetype"), url("../fonts/unibody_8-regular.svg#unibody_8regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* line 29, ../sass/layout.sass */
+  * {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+}
+/* line 33, ../sass/layout.sass */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 38, ../sass/layout.sass */
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #23012c;
+  color: yellow;
+  cursor: url(""), auto;
+  font: 8px/12px "unibody_8regular", Menlo, Monaco, "Liberation Mono", "Lucida Console", Courier New, Courier, monospace;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+/* line 48, ../sass/layout.sass */
+html .noOverflow, body .noOverflow {
+  overflow: hidden;
+}
+
+/* line 51, ../sass/layout.sass */
+#container {
+  width: 100%;
+  min-width: 285px;
+}
+
+/* line 55, ../sass/layout.sass */
+img {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 60, ../sass/layout.sass */
+#watchers.bottom {
+  -webkit-transition: bottom 1s ease;
+  -moz-transition: bottom 1s ease;
+  -o-transition: bottom 1s ease;
+  transition: bottom 1s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 64, ../sass/layout.sass */
+#cloud.top {
+  -webkit-transition: top 1s ease;
+  -moz-transition: top 1s ease;
+  -o-transition: top 1s ease;
+  transition: top 1s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 72, ../sass/layout.sass */
+#watchers {
+  margin: 150px auto 0px auto;
+  bottom: 13px;
+  position: absolute;
+  left: 50%;
+  margin-left: -135px;
+  top: auto;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 82, ../sass/layout.sass */
+#watchers .row {
+  font-size: 0;
+  margin-bottom: 0px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+/* line 89, ../sass/layout.sass */
+#watchers .block {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+/* line 98, ../sass/layout.sass */
+#watchers .block .border {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 90px;
+  height: 90px;
+}
+/* line 105, ../sass/layout.sass */
+#watchers .block img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 90px;
+  height: 90px;
+}
+/* line 112, ../sass/layout.sass */
+#watchers .block .png {
+  opacity: 1;
+  visibility: visible;
+}
+/* line 114, ../sass/layout.sass */
+#watchers .block .gif {
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 117, ../sass/layout.sass */
+#watchers .block .border:hover {
+  -webkit-box-shadow: inset 0px 0px 10px 1px #ee7107;
+  -moz-box-shadow: inset 0px 0px 10px 1px #ee7107;
+  box-shadow: inset 0px 0px 10px 1px #ee7107;
+}
+/* line 121, ../sass/layout.sass */
+#watchers .block.active .border {
+  -webkit-box-shadow: inset 0px 0px 10px 1px #ee7107;
+  -moz-box-shadow: inset 0px 0px 10px 1px #ee7107;
+  box-shadow: inset 0px 0px 10px 1px #ee7107;
+}
+/* line 124, ../sass/layout.sass */
+#watchers .block.active .png {
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 127, ../sass/layout.sass */
+#watchers .block.active .gif {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 135, ../sass/layout.sass */
+#tweets {
+  opacity: 0;
+  visibility: hidden;
+  font: 8px/12px "unibody_8regular", Menlo, Monaco, "Liberation Mono", "Lucida Console", Courier New, Courier, monospace;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+/* line 146, ../sass/layout.sass */
+#cloud {
+  width: 344px;
+  height: 110px;
+  position: fixed;
+  left: 50%;
+  top: 0px;
+  margin-left: -172px;
+  background-color: #23012c;
+}
+/* line 155, ../sass/layout.sass */
+#cloud .image {
+  width: 344px;
+  height: 90px;
+  position: absolute;
+  bottom: -15px;
+  background: url("../images/cloud.png") center no-repeat;
+}
+
+/* line 167, ../sass/layout.sass */
+#about {
+  position: fixed;
+  bottom: -500px;
+  left: 50%;
+  width: 270px;
+  margin-left: -135px;
+  background-color: #23012c;
+  text-align: center;
+  -webkit-transition: bottom 1s ease;
+  -moz-transition: bottom 1s ease;
+  -o-transition: bottom 1s ease;
+  transition: bottom 1s ease;
+}
+/* line 177, ../sass/layout.sass */
+#about .hr {
+  width: 270px;
+  height: 16px;
+  margin-top: -10px;
+  margin-bottom: 1em;
+  background: url("../images/hr.png") center no-repeat;
+}
+
+/* line 192, ../sass/layout.sass */
+#sigils {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+/* line 196, ../sass/layout.sass */
+#sigils .sigil {
+  margin: 5px;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  background-size: 100% 100%;
+  background-position: center;
+}
+/* line 203, ../sass/layout.sass */
+#sigils a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+/* line 6, ../../../.rvm/gems/ruby-1.9.3-p429/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_unstyled-link.scss */
+#sigils a:active, #sigils a:focus {
+  outline: none;
+}
+/* line 206, ../sass/layout.sass */
+#sigils .sigil.az {
+  background: url("../images/sigil/az.png");
+}
+/* line 208, ../sass/layout.sass */
+#sigils .sigil.ic {
+  background: url("../images/sigil/ic.png");
+}
+/* line 210, ../sass/layout.sass */
+#sigils .sigil.cb {
+  background: url("../images/sigil/cb.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* line 215, ../sass/layout.sass */
+  #sigils .sigil.az {
+    background: url("../images/sigil/az@2x.png");
+  }
+  /* line 217, ../sass/layout.sass */
+  #sigils .sigil.ic {
+    background: url("../images/sigil/ic@2x.png");
+  }
+  /* line 219, ../sass/layout.sass */
+  #sigils .sigil.cb {
+    background: url("../images/sigil/cb@2x.png");
+  }
+}
+/* line 226, ../sass/layout.sass */
+#info {
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: url("../images/border-topLeft.png") top left, url("../images/border-topRight.png") top right, url("../images/border-bottomRight.png") bottom right, url("../images/border-bottomLeft.png") bottom left;
+  background-repeat: no-repeat;
+}
+/* line 236, ../sass/layout.sass */
+#info .info-button {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+}
+
+/* #Media Queries
+ *================================================== */
+@media only screen and (max-width: 767px) {
+  /* line 246, ../sass/layout.sass */
+  #container {
+    width: 100%;
+  }
+
+  /* line 249, ../sass/layout.sass */
+  #watchers, #cloud {
+    top: 70px;
+  }
+}
+/* Smaller than standard 960 (devices and browsers) */
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+/* All Mobile Sizes (devices and browser) */
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
